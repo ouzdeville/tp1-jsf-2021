@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Facelet Title</title>
+    </h:head>
+    <h:body>
+        <h:form>
+            <h:panelGrid columns="2">
+                <h:outputLabel value="Login:"/>
+                <h:inputText value="#{userController.user.login}"/>
+
+                <h:outputLabel value="Mot de Passe:"/>
+                <h:inputSecret value="#{userController.user.password}"/>
+
+                <h:outputLabel value=""/>
+                <h:commandButton value="Login" action="#{userController.auth()}" />
+                
+                <h:outputLabel value=""/>
+                <h:commandLink  value="Créer un compte" action="#{userController.creerCompte}"/>
+               
+            </h:panelGrid>
+        </h:form>
+    </h:body>
+</html>
+
