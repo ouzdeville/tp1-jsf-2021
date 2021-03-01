@@ -5,6 +5,9 @@
  */
 package controller;
 
+import java.util.ArrayList;
+import java.util.List;
+import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import model.Utilisateur;
@@ -17,10 +20,22 @@ import model.Utilisateur;
 @SessionScoped
 public class UserController {
     public Utilisateur user=new Utilisateur();
+    public List<Utilisateur> userList=null;
     /**
      * Creates a new instance of UserController
      */
     public UserController() {
+        
+    }
+    
+    @PostConstruct
+    public void init(){
+        System.out.println("Appel de INIT ");
+        userList=new ArrayList<>();
+        userList.add(new Utilisateur("Nom", "PreNom", "login", ""));
+        for (int i = 0; i < 10; i++) {
+            userList.add(new Utilisateur("Nom"+i, "PreNom"+i, "logi"+i, "tdsi"));
+        }
     }
 
     public Utilisateur getUser() {
@@ -46,4 +61,14 @@ public class UserController {
     public String creerCompte(){
         return "connexion?faces-redirect=true";
     }
+
+    public List<Utilisateur> getUserList() {
+        return userList;
+    }
+
+    public void setUserList(List<Utilisateur> userList) {
+        this.userList = userList;
+    }
+    
+    
 }

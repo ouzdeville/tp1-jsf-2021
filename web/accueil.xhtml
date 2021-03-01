@@ -7,6 +7,24 @@
     </h:head>
     <h:body>
         <h:outputText value="#{userController.user.login}"  />
+        
+        <h:dataTable border="1"  value="#{userController.userList}" var="u">
+        
+            <h:column  >
+                <h:outputText value="#{u.prenom}"/>
+            </h:column>
+            
+            
+            <h:column >
+                <h:outputText value="#{u.nom}"/>
+            </h:column>
+            
+            
+            <h:column >
+                <h:outputText value="#{u.login}"/>
+            </h:column>
+            
+        </h:dataTable>
     </h:body>
 </html>
 
