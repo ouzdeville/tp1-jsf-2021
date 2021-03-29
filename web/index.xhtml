@@ -8,10 +8,7 @@
     </h:head>
     <h:body>
         <ui:composition template="/templates/template.xhtml">
-            <ui:define name="header">
-                    <ui:include src="/templates/header.xhtml"></ui:include>
-                </ui:define>
-            <ui:define name="content">
+            <ui:define name="body">
                 <h:form>
                     <h:panelGrid columns="2">
                         <h:outputLabel value="Login:"/>
@@ -27,8 +24,9 @@
                         <h:commandLink  value="Créer un compte" action="#{userController.creerCompte}"/>
 
                     </h:panelGrid>
-                </h:form>
+                </h:form>  
             </ui:define>
+            
         </ui:composition>
 
     </h:body>
