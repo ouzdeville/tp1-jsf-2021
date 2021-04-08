@@ -1,33 +1,72 @@
-<?xml version='1.0' encoding='UTF-8' ?> 
+<?xml version='1.0' encoding='UTF-8' ?>  
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:p="http://primefaces.org/ui"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
 
     <h:head>
         <title><ui:insert name="title">Default Title</ui:insert></title>
         <f:facet name="first">
             <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <META http-equiv="Cache-Control" content="no-cache"/> 
-            <META HTTP-EQUIV="Pragma" CONTENT="no-cache"/>
-            <META HTTP-EQUIV="Expires" CONTENT="-1"/>
         </f:facet>
-    </h:head>
+        <link rel="shortcut icon" href="#{request.contextPath}/resources/images/favicon.ico" type="image/x-icon" />
+        <script name="jquery/jquery.js" library="primefaces"></script>
+        <h:outputStylesheet library="css" name="pfcrud.css"/>
+        <h:outputScript library="scripts" name="pfcrud.js"/>
+        <meta http-equiv="X-UA-Compatible" content="IE=8"/>
 
+    </h:head>
+    <!--<f:event type="preRenderView" listener="#{loginController.testConnect}" />-->
     <h:body>
-        
-        <p:growl id="growl" life="10000" showDetail="true" />
+
+        <p:growl id="growl" life="5000" showDetail="false"/>
 
         <p:layout fullPage="true">
+            <p:layoutUnit position="north" size="100" header="YAMALE">
+
+                <ui:include src="appmenu.xhtml"/>
+
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west" size="300" header="Statistique" resizable="true" 
+                          closable="false" collapsible="true"
+                          style="text-align:center">
+                <ui:insert name="menu_gauche" > 
+                    <h:form>
+                        <p:accordionPanel>
+                            <p:tab title="Faculté">
+                                <h:link value="Statistiques de la Faculté"  />
+                            </p:tab>
+                            <p:tab title="Filière">
+                                <h:link value="Statistiques des Filières"  />
+                            </p:tab>
+                            <p:tab title="Niveau">
+                                <h:link value="Statistiques par Niveau"  />
+                            </p:tab>
+
+
+                        </p:accordionPanel>
+                    </h:form>
+
+                </ui:insert>
+            </p:layoutUnit>
             <p:layoutUnit position="center">
                 <ui:insert name="body"/>
             </p:layoutUnit>
-            <p:layoutUnit position="north">
-                <!-- Menu here. Also a layout and a way to log a user out -->
-                <!-- <ui:include src="/include/appmenu.xhtml"/> -->
+            
+            <p:layoutUnit position="east" size="300" header="Paramètre" resizable="true" 
+                          closable="false" collapsible="true"
+                          style="text-align:center">
+                <ui:insert name="menu_droite" > 
+                    <h:form>
+                      
+                    </h:form>
+
+                </ui:insert>
             </p:layoutUnit>
+
 
             <p:layoutUnit position="south" size="20">
                 <ui:insert name="footer"/>
@@ -35,23 +74,7 @@
 
 
 
-            <p:layoutUnit position="west" size="270" header="CONFIGURATION" collapsible="true" resizable="true">
-                <ui:insert name="west">
-                    <h:form>
-                        
-
-
-                    </h:form>
-                    
-                </ui:insert>
-                
-                <ui:insert name="image">
-                </ui:insert>
-            </p:layoutUnit>
-
         </p:layout>
-
-
 
     </h:body>
 
