@@ -11,10 +11,13 @@ package model;
  */
 public class Utilisateur {
     // private Type Variable
+    
+    private int id;
     private String nom="tdsi";
     private String prenom;
     private String login;
     private String password;
+    private String image;
 
     public Utilisateur() {
         
@@ -59,6 +62,22 @@ public class Utilisateur {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
     
     
