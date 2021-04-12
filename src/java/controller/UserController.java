@@ -27,15 +27,14 @@ public class UserController {
     public UserController() {
         
     }
-    
+    /**
+     * PostConstruct Permet d'initaliser les variables pour éviter les n
+     * ullPointerException
+     */
     @PostConstruct
     public void init(){
         System.out.println("Appel de INIT ");
         userList=new ArrayList<>();
-        userList.add(new Utilisateur("Nom", "PreNom", "login", ""));
-        for (int i = 0; i < 10; i++) {
-            userList.add(new Utilisateur("Nom"+i, "PreNom"+i, "logi"+i, "tdsi"));
-        }
     }
 
     public Utilisateur getUser() {
