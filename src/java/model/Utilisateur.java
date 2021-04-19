@@ -8,6 +8,11 @@ package model;
 /**
  *
  * @author OUSMANE
+ * Cette classe est un JavaBean donc, elle doit
+ * etre publique et avoir
+ * Un constructeur par défaut publique
+ * des attributs et getter & setter pour chacun
+ * en option, implements serializable
  */
 public class Utilisateur {
     // private Type Variable
@@ -18,13 +23,17 @@ public class Utilisateur {
     private String login;
     private String password;
     private String image;
+    private String email;
 
+    /**
+     * Le constructeur par défaut.
+     */
     public Utilisateur() {
         
     }
 
-    public Utilisateur(String tour, String prenom, String login, String password) {
-        this.nom = tour;
+    public Utilisateur(String nom, String prenom, String login, String password, String email) {
+        this.nom = nom;
         this.prenom = prenom;
         this.login = login;
         this.password = password;
@@ -78,8 +87,16 @@ public class Utilisateur {
 
     public void setImage(String image) {
         this.image = image;
+    }  
+    
+    @Override
+    public String toString() {
+        return this.prenom+" "+this.nom;
     }
+
     
-    
-    
+    @Override
+    public  Utilisateur clone() {
+        return new Utilisateur( nom,  prenom,  login,  password, email);
+    }
 }

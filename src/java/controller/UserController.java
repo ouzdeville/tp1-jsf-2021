@@ -57,9 +57,26 @@ public class UserController {
         else return "";
     }
     
+    /**
+     * Pas besoin de donner l'objet user en argument car c'est déjà mise à jour par JSF
+     * 1- verifier si tous les champs sont corrects 
+     * 2-ajouter à la liste
+     * @return 
+     */
     public String creerCompte(){
-        return "connexion?faces-redirect=true";
+        if(!this.user.getNom().equals("") &&
+                !this.user.getPrenom().equals("")){
+            
+            userList.add(0, user.clone());
+             user=new Utilisateur();
+            System.out.println(userList);
+            return "accueil?faces-redirect=true";
+        }
+        return "";
     }
+    
+    
+    
 
     public List<Utilisateur> getUserList() {
         return userList;
