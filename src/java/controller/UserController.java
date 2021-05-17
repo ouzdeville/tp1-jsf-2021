@@ -10,7 +10,10 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import model.Utilisateur;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import model.User;
 
 /**
  *
@@ -19,8 +22,9 @@ import model.Utilisateur;
 @ManagedBean  // oubien @Named import javax.enterprise.context.SessionScoped;
 @SessionScoped
 public class UserController {
-    public Utilisateur user=new Utilisateur();
-    public List<Utilisateur> userList=null;
+    public User user=new User();
+    public List<User> userList=null;
+    private EntityManager em;
     /**
      * Creates a new instance of UserController
      */
@@ -35,13 +39,16 @@ public class UserController {
     public void init(){
         System.out.println("Appel de INIT ");
         userList=new ArrayList<>();
+        EntityManagerFactory emf=Persistence.
+                createEntityManagerFactory("hellom2021PU");
+        em=emf.createEntityManager();
     }
 
-    public Utilisateur getUser() {
+    public User getUser() {
         return user;
     }
 
-    public void setUser(Utilisateur user) {
+    public void setUser(User user) {
         this.user = user;
     }
     
@@ -51,10 +58,8 @@ public class UserController {
     }
     
     public String auth(){
-        if(this.user.getLogin().equals("tdsi") && this.user.getPassword().equals("tdsi")){
-            return "accueil?faces-redirect=true";
-        }
-        else return "";
+        
+        return "";
     }
     
     /**
@@ -64,25 +69,18 @@ public class UserController {
      * @return 
      */
     public String creerCompte(){
-        if(!this.user.getNom().equals("") &&
-                !this.user.getPrenom().equals("")){
-            
-            userList.add(0, user.clone());
-             user=new Utilisateur();
-            System.out.println(userList);
-            return "accueil?faces-redirect=true";
-        }
+        
         return "";
     }
     
     
     
 
-    public List<Utilisateur> getUserList() {
+    public List<User> getUserList() {
         return userList;
     }
 
-    public void setUserList(List<Utilisateur> userList) {
+    public void setUserList(List<User> userList) {
         this.userList = userList;
     }
     
