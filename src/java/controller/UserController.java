@@ -13,6 +13,7 @@ import javax.faces.bean.SessionScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import model.Profil;
 import model.User;
 
 /**
@@ -69,7 +70,11 @@ public class UserController {
      * @return 
      */
     public String creerCompte(){
-        
+        em.getTransaction().begin();
+        user.setIdProfil(new Profil(1));
+        em.persist(user);
+        em.getTransaction().commit();
+        user=new User();
         return "";
     }
     
