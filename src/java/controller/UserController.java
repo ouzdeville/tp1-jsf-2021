@@ -5,6 +5,7 @@
  */
 package controller;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
@@ -22,7 +23,7 @@ import model.User;
  */
 @ManagedBean  // oubien @Named import javax.enterprise.context.SessionScoped;
 @SessionScoped
-public class UserController {
+public class UserController implements Serializable{
     public User user=new User();
     public List<User> userList=null;
     private EntityManager em;

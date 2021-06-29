@@ -113,7 +113,7 @@ public class Filiere implements Serializable {
 
     @Override
     public String toString() {
-        return "model.Filiere[ idfiliere=" + idfiliere + " ]";
+        return nom;
     }
     
 }
